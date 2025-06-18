@@ -15,8 +15,9 @@ function App() {
   const [numerosVendidos, setNumerosVendidos] = useState([]);
   const [mostrarPagamento, setMostrarPagamento] = useState(false);
   const [numerosAtivos, setNumerosAtivos] = useState([]);
-  const apiConsultar = process.env.REACT_APP_API_CONSULTAR;
-  const apiDesativar = process.env.REACT_APP_API_DESATIVAR;
+  const apiConsultar = process.env.REACT_APP_API_CONSULTAR.replace(/^"|"$/g, '');
+  const apiDesativar = process.env.REACT_APP_API_DESATIVAR.replace(/^"|"$/g, '');
+
 
 
   const chavePix = process.env.REACT_APP_CHAVE_PIX;;
