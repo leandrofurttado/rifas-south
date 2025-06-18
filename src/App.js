@@ -49,6 +49,7 @@ function App() {
     axios.post(apiDesativar, form)
       .then(response => {
         toast.success("Números foram vendidos com sucesso!");
+        window.location.reload();
       })
       .catch(error => {
         toast.error("Erro ao desativar rifas:", error);
