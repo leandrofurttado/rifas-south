@@ -126,10 +126,13 @@ function App() {
 
   return (
     <div className="App" id="tabela-rifas">
-      <h1> Rifa de São João - Escolha seus Números </h1>
+      <h1> Rifa Solidária de São João - Escolha seus Números </h1>
       <h1> Valor Unidade: R$5,00 </h1>
-      <button onClick={abrirAdminModal} className="admin-btn">Cadastrar Números Vendidos (Admin)</button>
-      <button onClick={exportarImagem} className="admin-btn">📸 Exportar Imagem</button>
+      <div className="buttons-start">
+        <button onClick={abrirAdminModal} className="admin-btn">Cadastrar Números Vendidos (Admin)</button>
+        <button onClick={exportarImagem} className="admin-btn">📸 Exportar Imagem</button>
+      </div>
+
       <div className="grid">
 
         {Array.from({ length: totalNumeros }, (_, i) => i + 1).map((numero) => {
