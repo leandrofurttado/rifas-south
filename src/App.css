@@ -1,9 +1,16 @@
 body {
-  background: url('screens/assets/images/fundo.jpg') no-repeat center center fixed;
+  background-color: #FDC100;
   background-size: cover;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
   margin: 0;
   color: #333;
+}
+
+#tabela-rifas {
+  background: url('screens/assets/images/fundo.jpg') no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+  border-radius: 12px;
 }
 
 .App {

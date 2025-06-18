@@ -127,9 +127,9 @@ function App() {
   return (
     <div className="App" id="tabela-rifas">
       <h1> Rifa Solidária de São João - Escolha seus Números </h1>
-      <h1> Valor Unidade: R$5,00 </h1>
+      <h1> Valor Unidade: R$10,00 </h1>
       <div className="buttons-start">
-        <button onClick={abrirAdminModal} className="admin-btn">Cadastrar Números Vendidos (Admin)</button>
+        <button onClick={abrirAdminModal} className="admin-btn">Cadastrar Números Vendidos</button>
         <button onClick={exportarImagem} className="admin-btn">📸 Exportar Imagem</button>
       </div>
 
@@ -174,7 +174,7 @@ function App() {
             </div>
 
             <p className="valor-total">
-              <strong>Valor total:</strong> R${numerosSelecionados.length * 5},00
+              <strong>Valor total:</strong> R${numerosSelecionados.length * 10},00
             </p>
 
             <div className="info-pix">
@@ -186,7 +186,7 @@ function App() {
             <div className="qr">
               <p><strong>Ou escaneie o QR Code:</strong></p>
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Pix%20para%20${chavePix}%20-%20Valor:%20R$${numerosSelecionados.length * 5},00`}
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Pix%20para%20${chavePix}%20-%20Valor:%20R$${numerosSelecionados.length * 10},00`}
                 alt="QR Code Pix"
               />
             </div>
