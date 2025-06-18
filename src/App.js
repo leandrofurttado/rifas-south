@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import html2canvas from 'html2canvas';
 
 function App() {
 
@@ -55,6 +55,16 @@ function App() {
         toast.error("Erro ao desativar rifas:", error);
       });
   }
+
+  const exportarImagem = () => {
+    const elemento = document.getElementById('tabela-rifas'); // Altere para o ID correto
+    html2canvas(elemento).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'rifa-sao-joao.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+  };
 
   function consultarNumeros() {
     axios.get(apiConsultar)
@@ -115,12 +125,13 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" id="tabela-rifas">
       <h1> Rifa de São João - Escolha seus Números </h1>
       <h1> Valor Unidade: R$5,00 </h1>
       <button onClick={abrirAdminModal} className="admin-btn">Cadastrar Números Vendidos (Admin)</button>
-
+      <button onClick={exportarImagem} className="admin-btn">📸 Exportar Imagem</button>
       <div className="grid">
+
         {Array.from({ length: totalNumeros }, (_, i) => i + 1).map((numero) => {
           const vendido = !numerosAtivos.includes(numero);
           const selecionado = numerosSelecionados.includes(numero);
@@ -215,7 +226,7 @@ function App() {
         </div>
       )}
 
-    <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );
 }
