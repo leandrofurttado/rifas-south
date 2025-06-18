@@ -2,6 +2,9 @@ import './App.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
 
@@ -18,8 +21,6 @@ function App() {
   const apiConsultar = process.env.REACT_APP_API_CONSULTAR.replace(/^"|"$/g, '');
   const apiDesativar = process.env.REACT_APP_API_DESATIVAR.replace(/^"|"$/g, '');
 
-
-
   const chavePix = process.env.REACT_APP_CHAVE_PIX;;
 
   const handleSelecionarNumero = (numero) => {
@@ -34,7 +35,7 @@ function App() {
 
   const abrirPagamento = () => {
     if (numerosSelecionados.length === 0) {
-      alert('Selecione pelo menos um número antes de finalizar.');
+      toast.warning('Selecione pelo menos um número antes de finalizar.');
       return;
     }
     setMostrarPagamento(true);
@@ -47,10 +48,10 @@ function App() {
 
     axios.post(apiDesativar, form)
       .then(response => {
-        console.log("Rifas desativadas com sucesso:", response.data);
+        toast.success("Números foram vendidos com sucesso!");
       })
       .catch(error => {
-        console.error("Erro ao desativar rifas:", error);
+        toast.error("Erro ao desativar rifas:", error);
       });
   }
 
@@ -69,7 +70,8 @@ function App() {
 
   const copiarPix = () => {
     navigator.clipboard.writeText(chavePix);
-    alert('Chave Pix copiada!');
+    toast.success('Chave pix copiada!');
+
   };
 
   const fecharModal = () => {
@@ -92,7 +94,7 @@ function App() {
 
   const confirmarNumerosVendidos = () => {
     if (senhaAdmin !== senhaCorreta) {
-      alert("Senha incorreta!");
+      toast.error("Senha incorreta!");
       return;
     }
 
@@ -102,7 +104,7 @@ function App() {
       .filter(n => !isNaN(n) && n >= 1 && n <= totalNumeros) || [];
 
     if (numeros.length === 0) {
-      alert("Informe ao menos um número válido.");
+      toast.warning("Informe ao menos um número válido.");
       return;
     }
 
@@ -212,6 +214,7 @@ function App() {
         </div>
       )}
 
+    <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );
 }
