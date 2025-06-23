@@ -16,6 +16,7 @@ function App() {
   const [numerosVendidos, setNumerosVendidos] = useState([]);
   const [mostrarPagamento, setMostrarPagamento] = useState(false);
   const [numerosAtivos, setNumerosAtivos] = useState([]);
+
   const apiConsultar = process.env.REACT_APP_API_CONSULTAR.replace(
     /^"|"$/g,
     ""
@@ -207,10 +208,9 @@ function App() {
                 <strong>Ou escaneie o QR Code:</strong>
               </p>
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Pix%20para%20${chavePix}%20-%20Valor:%20R$${
-                  numerosSelecionados.length * 10
-                },00`}
+                src={require('./screens/assets/images/qr_code.jpg')}
                 alt="QR Code Pix"
+                style={{ width: "200px", height: "200px" }}
               />
             </div>
 
